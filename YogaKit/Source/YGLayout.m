@@ -170,22 +170,22 @@ static YGConfigRef globalConfig;
   return YGNodeIsDirty(self.node);
 }
 
-- (void)markDirty
-{
-  if (self.isDirty || !self.isLeaf) {
-    return;
-  }
-
-  // Yoga is not happy if we try to mark a node as "dirty" before we have set
-  // the measure function. Since we already know that this is a leaf,
-  // this *should* be fine. Forgive me Hack Gods.
-  const YGNodeRef node = self.node;
-  if (!YGNodeHasMeasureFunc(node)) {
-    YGNodeSetMeasureFunc(node, YGMeasureView);
-  }
-
-  YGNodeMarkDirty(node);
-}
+//- (void)markDirty
+//{
+//  if (self.isDirty || !self.isLeaf) {
+//    return;
+//  }
+//
+//  // Yoga is not happy if we try to mark a node as "dirty" before we have set
+//  // the measure function. Since we already know that this is a leaf,
+//  // this *should* be fine. Forgive me Hack Gods.
+//  const YGNodeRef node = self.node;
+//  if (YGNodeHasMeasureFunc(node)) {
+//    YGNodeSetMeasureFunc(node, YGMeasureView);
+//  }
+//
+//  YGNodeMarkDirty(node);
+//}
 
 - (NSUInteger)numberOfChildren
 {
@@ -425,7 +425,7 @@ static void YGRemoveAllChildren(const YGNodeRef node)
     return;
   }
 
-  YGNodeRemoveAllChildren(node);
+//  YGNodeRemoveAllChildren(node);
 }
 
 static CGFloat YGRoundPixelValue(CGFloat value)
